@@ -11,7 +11,7 @@ Category.getAllCategories = (result) => {
             console.log("Error while fetching category", err);
             result(null, err);
         } else {
-            console("Category fetching successfully");
+            console.log("Category fetching successfully");
             result(null, res);
         }
     });
@@ -29,7 +29,7 @@ Category.getCategoryByID = (id, result) => {
 };
 
 Category.createCategory = (categoryReqData, result) => {
-    dbConn.query("INSERT into Category SET ?", categoryReqData, (err, res) => {
+    dbConn.query("INSERT into category SET ?", categoryReqData, (err, res) => {
         if (err) {
             console.log('Error while inserting data');
             result(null, err);
