@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+
 const adminBookRoutes = require('./routes/adminRoutes/bookRoute');
 const adminCategoryRoutes = require('./routes/adminRoutes/categoryRoute');
 const adminSubCategoryRoutes = require('./routes/adminRoutes/subCategoryRoute');
+
+const userBookRoutes = require('./routes/userRoutes/bookRoute');
+
 
 
 //create express app
@@ -25,6 +29,11 @@ app.get('/', (req, res) => {
 app.use('/api/v1/admin/book', adminBookRoutes);
 app.use('/api/v1/admin/category', adminCategoryRoutes);
 app.use('/api/v1/admin/sub-category', adminSubCategoryRoutes);
+
+//define user route
+app.use('/api/v1/user/book', userBookRoutes);
+
+
 
 app.listen(port, () => {
   console.log(`CongThanh's app is running on port ${port}`);

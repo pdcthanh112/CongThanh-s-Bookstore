@@ -1,4 +1,4 @@
-const dbConn = require("../config/dbConfig");
+const dbConn = require('../config/dbConfig');
 
 var Book = function (book) {
     this.id = book.id;
@@ -17,8 +17,9 @@ var getDate = () => {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
 
+//Get all Book - ADMIN
 Book.getAllBooks = (result) => {
-    dbConn.query("SELECT * FROM book", (err, res) => {
+    dbConn.query('SELECT * FROM book', (err, res) => {
         if (err) {
             console.log("Error while fetching book", err);
             result(null, err);
@@ -29,6 +30,20 @@ Book.getAllBooks = (result) => {
     });
 };
 
+//Get all available Book - USER
+Book.getAllAvailableBooks = (result) => {
+    dbConn.query("SELECT * FROM book WHERE status = 2", (err, res) => {
+        if (err) {
+            console.log("Error while fetching book", err);
+            result(null, err);
+        } else {
+            console.log("Book fetching successfully");
+            result(null, res);
+        }
+    });
+};
+
+//Get all Book by ID - ADMIN
 Book.getBookByID = (id, result) => {
     dbConn.query("SELECT * FROM book WHERE id = ?", id, (err, res) => {
         if (err) {
@@ -40,6 +55,19 @@ Book.getBookByID = (id, result) => {
     });
 };
 
+//Get available Book by ID - USER
+Book.getAvailableBookByID = (id, result) => {
+    dbConn.query("SELECT * FROM book WHERE id = ? AND status = 2", id, (err, res) => {
+        if (err) {
+            console.log("Error while fetching book by ID", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
+//Create a new Book - ADMIN
 Book.createBook = (bookReqData, result) => {
     dbConn.query("INSERT into book SET ?", bookReqData, (err, res) => {
         if (err) {
@@ -52,19 +80,21 @@ Book.createBook = (bookReqData, result) => {
     });
 };
 
+//Update a Book - ADMIN
 Book.updateBook = (id, bookReqData, result) => {
-    dbConn.query('UPDATE book SET book_name = ?, category = ?, sub_category = ?, author = ?, quantity = ?, price = ?, update_date = ?, image = ?, status = ? WHERE = ?', 
-                [bookReqData.book_name, bookReqData.category, bookReqData.sub_category, bookReqData.author, bookReqData.quantity, bookReqData.price, getDate(), bookReqData.image, bookReqData.status, id], (err, res) => {
-        if (err) {
-            console.log('Error while updating the book')
-            result(null, err)
-        } else {
-            console.log('Update book successfully');
-            result(null, res)
-        }
-    });
+    dbConn.query('UPDATE book SET book_name = ?, category = ?, sub_category = ?, author = ?, quantity = ?, price = ?, update_date = ?, image = ?, status = ? WHERE = ?',
+        [bookReqData.book_name, bookReqData.category, bookReqData.sub_category, bookReqData.author, bookReqData.quantity, bookReqData.price, getDate(), bookReqData.image, bookReqData.status, id], (err, res) => {
+            if (err) {
+                console.log('Error while updating the book')
+                result(null, err)
+            } else {
+                console.log('Update book successfully');
+                result(null, res)
+            }
+        });
 }
 
+//Remove a Book - ADMIN
 Book.deleteBook = (id, result) => {
     dbConn.query('DELETE FROM book WHERE id = ?', [id], (err, res) => {
         if (err) {
