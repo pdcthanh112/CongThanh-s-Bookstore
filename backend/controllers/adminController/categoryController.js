@@ -22,7 +22,8 @@ exports.createNewCategory = (req, res) => {
         CategoryModel.createCategory(categoryReqData, (err, category) => {
             if (err)
                 res.send(err);
-            res.json({ status: true, message: 'Category created succesfully', data: category.insertId })
+            else
+                res.json({ status: true, message: 'Category created succesfully mmm ', data: category.insertId })
         })
     }
 };

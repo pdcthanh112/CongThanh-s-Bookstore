@@ -1,5 +1,5 @@
 const dbConn = require("../config/dbConfig");
-const { uuid } = require('uuidv4');
+const { v4: uuid_v4 } = require('uuid');
 
 var Category = function (category) {
     this.id = category.id;
@@ -30,7 +30,7 @@ Category.getCategoryByID = (id, result) => {
 };
 
 Category.createCategory = (categoryReqData, result) => {
-    dbConn.query("INSERT into category VALUES (?, ?)", [uuid(), categoryReqData.category_name], (err, res) => {
+    dbConn.query("INSERT into category VALUES (?, ?)", [uuid_v4(), categoryReqData.category_name], (err, res) => {
         if (err) {
             console.log('Error while inserting data');
             result(null, err);
@@ -55,7 +55,7 @@ Category.updateCategory = (id, categoryReqData, result) => {
 
 Category.deleteCategory = (id, result) => {
     dbConn.query('DELETE FROM category WHERE id = ?', [id], (err, res) => {
-        if(err) {
+        if (err) {
             console.log('Error while deleting the category');
             result(null, err)
         } else {
