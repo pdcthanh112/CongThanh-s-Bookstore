@@ -1,0 +1,11 @@
+ul {
+  display: inline-flex;
+  li {
+    list-style-type: none;
+    
+    a {
+      text-decoration: none;
+      border: 15px;
+    }
+  }
+}
