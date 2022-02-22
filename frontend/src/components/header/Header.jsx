@@ -5,13 +5,11 @@ import "./header.scss"
 
 const Header = () => {
     return (
-        <div className="top">
-            <div className="left_side">
+        <div>
+            <div>
                 <h2>CongThanh's Bookstore</h2>
             </div>
-            <div className="right_side">
-                <Navbar />
-            </div>
+           <Navbar/>
         </div>
     )
 }
