@@ -1,8 +1,15 @@
 import React from 'react'
+import Layout from '../../pages/Layout'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    
+      <Layout title='Lign Page' description="CongThanh's bookstore">
+....
+Login
+
+    </Layout>
+
   )
 }
 

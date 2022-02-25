@@ -5,11 +5,11 @@ import "./header.scss"
 
 const Header = () => {
     return (
-        <div>
-            <div>
+        <div style={{display: 'flex'}}>
+            <div  style={{width: '90%'}}> 
                 <h2>CongThanh's Bookstore</h2>
             </div>
-           <Navbar/>
+           <Navbar style={{width: '20%'}}/>
         </div>
     )
 }

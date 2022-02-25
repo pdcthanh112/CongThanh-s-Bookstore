@@ -1,25 +1,28 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./navbar.scss";
 
 const Navbar = () => {
     return (
-        <div>
-            <ul className="nav nav-tabs bg-primary">
-                <li className="nav-item">
-                    <Link className="nav-link" to="/">Home</Link>
-                </li>
-                <li>
-                    <Link className="nav-link" to="/profile">Profile</Link>
-                </li>
-                <li>
-                    <Link className="nav-link" to="/login">Login</Link>
-                </li>
-                <li>
-                    <Link className="nav-link" to="/register">Register</Link>
-                </li>
-            </ul>
-        </div>
+        <ul className="navList">
+            <li className="navItem">
+                <i className="fa-solid fa-house-user fa-xl navIcon"></i>
+                <Link className="navLink" to="/">Home</Link>
+            </li>
+            <li className="navItem">
+                <i class="fa-solid fa-address-card  fa-xl navIcon"></i>
+                <Link className="navLink" to="/profile">Profile</Link>
+            </li>
+            <li className="navItem">
+            <i class="fa-solid fa-cart-plus fa-xl navIcon"></i>
+                <Link className="navLink" to="/cart">Cart</Link>
+            </li>
+            <li className="navItem">
+            <i class="fa-solid fa-arrow-right-to-bracket fa-xl navIcon"></i>
+                <Link className="navLink" to="/login">Login</Link>
+            </li>
+        </ul>
     )
 }
 

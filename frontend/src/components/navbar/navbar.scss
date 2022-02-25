@@ -1,1 +1,28 @@
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+    width: 40%;
+  .navItem {
+    display: flex;    
+  }
+}
 
+.navLink {
+    display: block;
+    padding: 0.5rem 1rem 0.5rem 0.1rem ;
+    color: rgb(1, 202, 135);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+  }
+
+.navIcon {
+    display: block;
+    padding: 1.2rem 0.1rem ;
+    color: rgb(1, 202, 135);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+  }

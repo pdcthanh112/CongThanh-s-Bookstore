@@ -16,8 +16,8 @@ var getDate = () => {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
 
-Account.login = (username, password, result) => {
-    dbConn.query('SELECT full_name, role FROM account WHERE user_name = ? and password = ?', [username, password], (err, res) => {
+Account.login = (loginReqData, result) => {
+    dbConn.query('SELECT full_name, role FROM account WHERE user_name = ? and password = ?', [loginReqData.username, loginReqData.password], (err, res) => {
         if (err) {
             console.log('Login fail');
             result(null, err);
