@@ -29,6 +29,17 @@ SubCategory.getSubCategoryByID = (id, result) => {
     });
 };
 
+SubCategory.getSubCategoryByCategoryID = (id, result) => {
+    dbConn.query('SELECT * FROM sub_category WHERE category = ?', id, (err, res) => {
+        if (err) {
+            console.log("Error while fetching subcategory by ID", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
 SubCategory.createSubCategory = (subCategoryReqData, result) => {
     dbConn.query("INSERT into sub_category SET ?", subCategoryReqData, (err, res) => {
         if (err) {
@@ -55,7 +66,7 @@ SubCategory.updateCategory = (id, subCategoryReqData, result) => {
 
 SubCategory.deleteSubCategory = (id, result) => {
     dbConn.query('DELETE FROM sub_category WHERE id = ?', [id], (err, res) => {
-        if(err) {
+        if (err) {
             console.log('Error while deleting the category');
             result(null, err)
         } else {

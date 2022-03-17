@@ -24,6 +24,7 @@ Account.login = (loginReqData, result) => {
         } else {
             console.log('Login successfully');
             // check coi res nó trả về cái gì, rồi mới làm tiếp được
+            result(null, res);
         }
     })
 };

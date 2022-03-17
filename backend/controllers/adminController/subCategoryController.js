@@ -14,6 +14,13 @@ exports.getSubCategoryByID = (req, res) => {
     });
 };
 
+exports.getSubCategoryByCategoryID = (req, res) => {
+    SubCategoryModel.getSubCategoryByCategoryID(req.params.id, (err, subCate) => {
+        if(err) res.send(err);
+        res.send(subCate);
+    });
+};
+
 exports.createNewSubCategory = (req, res) => {
     const subCateReqData = new SubCategoryModel(req.body)
     if (req.body.contrustor == Object && Object.keys(req.body).length === 0) {

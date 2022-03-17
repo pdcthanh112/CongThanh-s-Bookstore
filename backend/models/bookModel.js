@@ -17,6 +17,7 @@ var getDate = () => {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 }
 
+// ** ADMIN FUNCTION **
 //Get all Book - ADMIN
 Book.getAllBooks = (result) => {
     dbConn.query('SELECT * FROM book', (err, res) => {
@@ -30,20 +31,7 @@ Book.getAllBooks = (result) => {
     });
 };
 
-//Get all available Book - USER
-Book.getAllAvailableBooks = (result) => {
-    dbConn.query("SELECT * FROM book WHERE status = 2", (err, res) => {
-        if (err) {
-            console.log("Error while fetching book", err);
-            result(null, err);
-        } else {
-            console.log("Book fetching successfully");
-            result(null, res);
-        }
-    });
-};
-
-//Get all Book by ID - ADMIN
+//Get Book by ID - ADMIN
 Book.getBookByID = (id, result) => {
     dbConn.query("SELECT * FROM book WHERE id = ?", id, (err, res) => {
         if (err) {
@@ -55,21 +43,9 @@ Book.getBookByID = (id, result) => {
     });
 };
 
-//Get available Book by ID - USER
-Book.getAvailableBookByID = (id, result) => {
-    dbConn.query("SELECT * FROM book WHERE id = ? AND status = 2", id, (err, res) => {
-        if (err) {
-            console.log("Error while fetching book by ID", err);
-            result(null, err);
-        } else {
-            result(null, res);
-        }
-    });
-};
-
 //Create a new Book - ADMIN
 Book.createBook = (bookReqData, result) => {
-    dbConn.query("INSERT into book SET ?", bookReqData, (err, res) => {
+    dbConn.query("INSERT into book SET ?", [bookReqData], (err, res) => {
         if (err) {
             console.log('Error while inserting data');
             result(null, err);
@@ -105,5 +81,59 @@ Book.deleteBook = (id, result) => {
         }
     });
 }
+// ** USER FUNCTION **
+
+//Get all Book - USER
+Book.getAllAvailableBooks = (result) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE status = 2", (err, res) => {
+        if (err) {
+            console.log("Error while fetching book", err);
+            result(null, err);
+        } else {
+            console.log("Book fetching successfully");
+            result(null, res);
+        }
+    });
+};
+
+//Get Book by ID - USER
+Book.getAvailableBookByID = (id, result) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE id = ? AND status = 2", id, (err, res) => {
+        if (err) {
+            console.log("Error while fetching book by ID", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
+// Get book by categoryID - USER
+Book.getAllAvailableBookByCategory = (id, result) => {
+    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE category = ?', [id], (err, res) => {
+        if (err) {
+            console.log("Error while fetching book by ID", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
+// Get book by subcategoryID - USER
+Book.getAllAvailableBookBySubCategory = (id, result) => {
+    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE sub_category = ?', [id], (err, res) => {
+        if (err) {
+            console.log("Error while fetching book by ID", err);
+            result(null, err);
+        } else {
+            result(null, res);
+        }
+    });
+};
+
+
+
+
 
 module.exports = Book;

@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const authRoutes = require('./routes/authRoutes')
+
 const adminBookRoutes = require('./routes/adminRoutes/bookRoute');
 const adminCategoryRoutes = require('./routes/adminRoutes/categoryRoute');
 const adminSubCategoryRoutes = require('./routes/adminRoutes/subCategoryRoute');
 
 const userBookRoutes = require('./routes/userRoutes/bookRoute');
 
-
+require('dotenv').config();
 
 //create express app
 const app = express();
@@ -25,6 +27,9 @@ app.get('/', (req, res) => {
   res.send("Hello World!");
 });
 
+
+//define auth route
+app.use('/api/v1', authRoutes)
 //define admin route
 app.use('/api/v1/admin/book', adminBookRoutes);
 app.use('/api/v1/admin/category', adminCategoryRoutes);

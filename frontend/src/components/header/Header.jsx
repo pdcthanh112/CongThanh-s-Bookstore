@@ -5,7 +5,7 @@ import "./header.scss"
 
 const Header = () => {
     return (
-        <div style={{display: 'flex'}}>
+        <div className="header">
             <div  style={{width: '90%'}}> 
                 <h2>CongThanh's Bookstore</h2>
             </div>
