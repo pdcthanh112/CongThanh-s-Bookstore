@@ -6,24 +6,28 @@ const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
   headers: {
     'content-type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
   },
   paramsSerializer: params => queryString.stringify(params),
 });
 
-axiosClient.interceptors.request.use(async (config) => {
-  // Handle token here ...
+axios.interceptors.request.use((config) => {
+  //config.headers.authorization = `Bearer ${localStorage.getItem("jwtToken")}`;
   return config;
-});
+}, (error) => {
+    return Promise.reject(error);
+  }
+);
 
 axiosClient.interceptors.response.use((response) => {
-//   if (response && response.data) {
-//     return response;
-//   }
+  //   if (response && response.data) {
+  //     return response;
+  //   }
 
   return response;
 }, (error) => {
-  // Handle errors
-  throw error;
+  return Promise.reject(error);
 });
 
 export default axiosClient;

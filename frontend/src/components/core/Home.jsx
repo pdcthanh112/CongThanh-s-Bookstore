@@ -7,29 +7,28 @@ const Home = () => {
   const [listBook, setListBook] = useState([]);
 
   useEffect(() => { 
-    const fetchListBook = async () => {
+    const fetchRequest = async () => {
       try {
         // const params = {
         //   _page: 1,
         //   _limit: 10,
         // }
         const response = await bookApi.getAll();
-        setListBook(response)
+        setListBook(response.data);
       } catch (error) {
-        console.log('asfhoasnasohgfoasidshfoadso');
+        console.log('asfhoasnasohgfoasidshfoadso', error);
       }
     }
-    fetchListBook();
+    fetchRequest(); 
   }, [])
 
   return (
     <Layout title='Home Page' description="">
       ....
-      HOMEEEEEEEEEEEEEEEE {listBook}EEEEEEEEEEEEEEEEEEEEE
+      HOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
     </Layout>
 
   )
 }
-
 export default Home;
