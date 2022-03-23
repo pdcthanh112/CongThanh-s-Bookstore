@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '../Layout';
-import bookApi from '../../api/adminApi/bookApi';
+import './home.scss'
+import Layout from '../../layout/Layout';
+import bookApi from '../../../api/adminApi/bookApi';
+import BookList from '../../features/user/book/bookList/BookList';
 
 const Home = () => {
 
@@ -13,7 +15,7 @@ const Home = () => {
         //   _page: 1,
         //   _limit: 10,
         // }
-        const response = await bookApi.getAll();
+        const response = await bookApi.getAll();     
         setListBook(response.data);
       } catch (error) {
         console.log('asfhoasnasohgfoasidshfoadso', error);
@@ -24,8 +26,8 @@ const Home = () => {
 
   return (
     <Layout title='Home Page' description="">
-      ....
-      HOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+ 
+      <BookList listBook={listBook}/>
 
     </Layout>
 

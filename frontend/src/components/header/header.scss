@@ -1,16 +1,14 @@
 .header {
     display: flex;
     background-color: rgb(126, 233, 197);
-    height: 12rem;
-}
+    width: 100%;
+    height: 3rem;
 
-// .top {
-//     height: 200px;
-//     display: inline-flex;
-//     .left_side{
-//         width: 1000px;
-//     }
-//     .right_side {
-//         width: 400px;
-//     }
-// }
+    .header__logo {
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/congthanh-s-bookstore.appspot.com/o/Database%2FApp%20Image%2FBookstore-logo.png?alt=media&token=dfbffcea-b66f-4214-b626-35c2ebcd4107");
+        background-repeat: no-repeat;
+        width: 17rem;
+        height: 2rem;
+        margin: 0.5rem 0 0 10rem;
+    }
+}

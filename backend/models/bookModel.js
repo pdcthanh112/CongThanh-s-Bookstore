@@ -85,7 +85,7 @@ Book.deleteBook = (id, result) => {
 
 //Get all Book - USER
 Book.getAllAvailableBooks = (result) => {
-    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE status = 2", (err, res) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE status = 2", (err, res) => {
         if (err) {
             console.log("Error while fetching book", err);
             result(null, err);
@@ -98,7 +98,7 @@ Book.getAllAvailableBooks = (result) => {
 
 //Get Book by ID - USER
 Book.getAvailableBookByID = (id, result) => {
-    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE id = ? AND status = 2", id, (err, res) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE id = ? AND status = 2", id, (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
             result(null, err);
@@ -110,7 +110,7 @@ Book.getAvailableBookByID = (id, result) => {
 
 // Get book by categoryID - USER
 Book.getAllAvailableBookByCategory = (id, result) => {
-    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE category = ?', [id], (err, res) => {
+    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE category = ? AND status = 2', [id], (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
             result(null, err);
@@ -122,7 +122,7 @@ Book.getAllAvailableBookByCategory = (id, result) => {
 
 // Get book by subcategoryID - USER
 Book.getAllAvailableBookBySubCategory = (id, result) => {
-    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country FROM book WHERE sub_category = ?', [id], (err, res) => {
+    dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE sub_category = ?AND status = 2', [id], (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
             result(null, err);

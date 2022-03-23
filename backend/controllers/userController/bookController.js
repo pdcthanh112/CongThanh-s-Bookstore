@@ -2,6 +2,8 @@ const BookModel = require('../../models/bookModel');
 
 exports.getAllBooks = (req, res) => {
 
+    const {_page, _size} = req.query;
+    
     if (req.query.category !== undefined) {
         BookModel.getAllAvailableBookByCategory(req.query.category, (err, books) => {
             if (err) res.send(err);

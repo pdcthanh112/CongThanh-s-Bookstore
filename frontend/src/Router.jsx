@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Home from "./components/core/Home";
+import Home from "./components/core/home/Home";
 
 const Router = () => {
   return (
