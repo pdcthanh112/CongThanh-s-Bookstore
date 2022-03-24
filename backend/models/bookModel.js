@@ -84,8 +84,8 @@ Book.deleteBook = (id, result) => {
 // ** USER FUNCTION **
 
 //Get all Book - USER
-Book.getAllAvailableBooks = (result) => {
-    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE status = 2", (err, res) => {
+Book.getAllAvailableBooks = (pagination, result) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM bookstore.book WHERE status = 2 LIMIT ? OFFSET ?", [pagination.limit, pagination.offset], (err, res) => {
         if (err) {
             console.log("Error while fetching book", err);
             result(null, err);
@@ -97,7 +97,7 @@ Book.getAllAvailableBooks = (result) => {
 };
 
 //Get Book by ID - USER
-Book.getAvailableBookByID = (id, result) => {
+Book.getAvailableBookByID = (id, pagination, result) => {
     dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE id = ? AND status = 2", id, (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
@@ -109,7 +109,7 @@ Book.getAvailableBookByID = (id, result) => {
 };
 
 // Get book by categoryID - USER
-Book.getAllAvailableBookByCategory = (id, result) => {
+Book.getAllAvailableBookByCategory = (id, pagination, result) => {
     dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE category = ? AND status = 2', [id], (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
@@ -121,7 +121,7 @@ Book.getAllAvailableBookByCategory = (id, result) => {
 };
 
 // Get book by subcategoryID - USER
-Book.getAllAvailableBookBySubCategory = (id, result) => {
+Book.getAllAvailableBookBySubCategory = (id, pagination, result) => {
     dbConn.query('SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE sub_category = ?AND status = 2', [id], (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);

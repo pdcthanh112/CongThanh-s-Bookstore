@@ -11,7 +11,7 @@ const Header = () => {
     return (
         <div className="header">
             <div style={{ width: '90%' }}>
-                <div className="header__logo" onClick="location.href='/'"></div>
+                <div className="header__logo" onClick = {() => {Location.href='/'}}></div>
                 
             </div>
             <Navbar style={{ width: '20%' }} />
