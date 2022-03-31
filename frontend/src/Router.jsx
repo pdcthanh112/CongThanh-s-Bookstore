@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
+import Login from "./components/auth/login/Login";
+import Register from "./components/auth/register/Register";
 import Home from "./components/core/home/Home";
-import BookDetail from "./components/features/user/book/bookDetail/BookDetail";
 
 const Router = () => {
   return (
@@ -13,7 +12,6 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/book" element={<BookDetail />} />
         </Routes>
       </BrowserRouter>
     </Suspense>

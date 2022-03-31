@@ -5,10 +5,10 @@ import Footer from '../footer/Footer';
 
 const Layout = ({ className, children }) => {
     return (
-        <div>
+        <div className="layout">
             <div className="header__image"></div>
             <Header />
-            <div className="layout">
+            <div className='layout__content'>
                 <div className={className}>{children}</div>
             </div>
             <Footer />

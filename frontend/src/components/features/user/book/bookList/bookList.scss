@@ -4,8 +4,8 @@
   .bookItem {
     display: inline-block;
     width: 16rem;
-    height: 24rem;
-    background-color: rgba(153, 153, 153, 0.185);
+    height: 22rem;
+    //background-color: rgba(153, 153, 153, 0.185);
     margin: 20px 12px;
     padding: 20px;
     border: 2px solid rgba(153, 153, 153, 0.493);
@@ -19,12 +19,35 @@
     }
 
     .bookItem__bookname {
-      height: 3rem;
+      height: 2.2rem;
       font-size: 1rem;
       font-weight: normal;
       a {
         color: #000;
         text-decoration: none;
+      }
+    }
+
+    .bookItem_button {
+      display: inline;
+      justify-content: space-around;
+
+      .bookItem__addToCart {
+        background-color: rgb(67, 223, 19);
+        border-radius: 20px;
+        font-size: 0.8em;
+        color: rgb(235, 11, 11);
+        width: 6.3rem;
+        height: 2.4rem;
+      }
+      .bookItem__viewDetail {
+        background-color: rgb(19, 182, 223);
+        border-radius: 20px;
+        font-size: 0.8em;
+        color: rgb(235, 11, 11);
+        width: 6.3rem;
+        height: 2.4rem;
+        margin-left: 10px;
       }
     }
   }

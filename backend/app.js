@@ -1,20 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes')
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const authRoutes = require("./routes/authRoutes");
 
-const adminBookRoutes = require('./routes/adminRoutes/bookRoute');
-const adminCategoryRoutes = require('./routes/adminRoutes/categoryRoute');
-const adminSubCategoryRoutes = require('./routes/adminRoutes/subCategoryRoute');
+const adminBookRoutes = require("./routes/adminRoutes/bookRoute");
+const adminCategoryRoutes = require("./routes/adminRoutes/categoryRoute");
+const adminSubCategoryRoutes = require("./routes/adminRoutes/subCategoryRoute");
 
-const userBookRoutes = require('./routes/userRoutes/bookRoute');
+const userBookRoutes = require("./routes/userRoutes/bookRoute");
 
-require('dotenv').config();
+require("dotenv").config();
 
 //create express app
 const app = express();
 
 app.use(cors());
+// app.all("/", function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   next();
+// });
 
 //setup the server port
 const port = process.env.PORT || 8000;
@@ -25,22 +30,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //parse request data content type application/json
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-
 //define auth route
-app.use('/api/v1', authRoutes)
+app.use("/api/v1", authRoutes);
 //define admin route
-app.use('/api/v1/admin/book', adminBookRoutes);
-app.use('/api/v1/admin/category', adminCategoryRoutes);
-app.use('/api/v1/admin/sub-category', adminSubCategoryRoutes);
+app.use("/api/v1/admin/book", adminBookRoutes);
+app.use("/api/v1/admin/category", adminCategoryRoutes);
+app.use("/api/v1/admin/sub-category", adminSubCategoryRoutes);
 
 //define user route
-app.use('/api/v1/user/book', userBookRoutes);
-
-
+app.use("/api/v1/user/book", userBookRoutes);
 
 app.listen(port, () => {
   console.log(`CongThanh's app is running on port ${port}`);

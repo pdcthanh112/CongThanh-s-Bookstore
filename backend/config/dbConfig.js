@@ -9,7 +9,7 @@ const dbConn = mysql.createConnection({
 
 dbConn.connect((err) => {
   if (err) throw err;
-  console.log("Connect to Database Bookstore successfully");
+  console.log("Connect to Database 'Bookstore' successfully");
 });
 
 module.exports = dbConn;
