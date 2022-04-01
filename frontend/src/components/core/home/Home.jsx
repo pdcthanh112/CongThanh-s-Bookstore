@@ -24,7 +24,7 @@ const Home = () => {
       } catch (error) {
         console.log('Error: ', error);
       }
-    }
+    };
     fetchRequest(); 
   }, [currentPage, pageSize])
 

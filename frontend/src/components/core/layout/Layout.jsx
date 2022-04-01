@@ -3,13 +3,13 @@ import './layout.scss';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
-const Layout = ({ className, children }) => {
+const Layout = ({ children }) => {
     return (
         <div className="layout">
             <div className="header__image"></div>
             <Header />
             <div className='layout__content'>
-                <div className={className}>{children}</div>
+                {children}
             </div>
             <Footer />
         </div>

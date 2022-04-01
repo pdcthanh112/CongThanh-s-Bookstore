@@ -1,32 +1,68 @@
 import React, { useState, useEffect } from 'react'
+import './bookDetail.scss'
 import bookApi from '../../../../../api/userApi/bookApi';
 import Layout from '../../../../core/layout/Layout';
-import './bookDetail.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const BookDetail = ({ id }) => {
-  //const queryString = window.location.search;
-  //console.log(queryString);
-  const [bookId, setBookId] = useState(id);       //////////////////////////////////////////////////////////////////
-  const [book, setBook] = useState();
+const BookDetail = () => {
+
+  const bookId = new URLSearchParams(window.location.search).get("id");
+  const defaultBookImage = 'https://firebasestorage.googleapis.com/v0/b/congthanh-s-bookstore.appspot.com/o/Database%2FApp%20Image%2FDefault%20Image%2FDefault%20Book.png?alt=media&token=97effb99-873c-4858-99bc-4b46d1307d33';
+
+  const [book, setBook] = useState({});
+
   useEffect(() => {
     const fetchRequest = async () => {
       try {
         const response = await bookApi.getById(bookId);
-        console.log('RRRRRRRRRR', response.book_name);
         setBook(response)
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     fetchRequest();
   }, [bookId])
 
 
+  const handleAddtoCart = () => {
 
+  }
+  const handleBuyNow = () => {
+
+  }
 
   return (
     <Layout>
-      {/* {book.book_name}a */}a {book.book_name}
+      <div className='bookInformation'>
+        <div className='bookInformation__image'>
+          <img src={book.image || defaultBookImage} alt='Book' />
+          <div className='bookInformation__image-button'>
+            <button className='bookInformation__image-button__addToCart' onClick={() => handleAddtoCart}>
+              <i className="fa-solid fa-cart-shopping"></i>
+              &nbsp;Add to Cart
+            </button>
+            <button className='bookInformation__image-button__buyNow' onClick={() => handleBuyNow}>
+              <i className="fa-solid fa-sack-dollar"></i>
+              &nbsp;Buy now
+            </button>
+          </div>
+        </div>
+        <div className='bookInformation__detail'>
+          <div className='bookInformation__detail-bookname'>{book.book_name}</div>
+          <div className='bookInformation__detail-view-one'>
+            <div className='bookInformation__detail-publisher'>Publisher: <b>{book.publisher || 'Unknown'}</b></div>
+            <div className='bookInformation__detail-author'>Author: <b>{book.author}</b></div>
+          </div>
+          <div className='bookInformation__detail-view-two'>
+            <div className='bookInformation__detail-quantity'>Quantity: <b>{book.quantity}</b></div>
+            <div className='bookInformation__detail-country'>Country: <b>{book.country || 'Unknown'}</b></div>
+          </div>
+          <div className='bookInformation__detail-price'>${book.price}</div>
+        </div>
+      </div>
+      <div className='bookDetail'>
+
+      </div>
     </Layout>
   )
 }
