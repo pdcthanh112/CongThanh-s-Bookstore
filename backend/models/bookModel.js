@@ -86,7 +86,7 @@ Book.deleteBook = (id, result) => {
 
 //Get all Book - USER
 Book.getAllAvailableBooks = (pagination, result) => {
-    dbConn.query("SELECT id, book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM bookstore.book WHERE status = 2 LIMIT ? OFFSET ?", [pagination.limit, pagination.offset], (err, res) => {
+    dbConn.query("SELECT id, book_name, category, sub_category, author, quantity, price, series, publisher, country, rating, image FROM bookstore.book WHERE status = 2 LIMIT ? OFFSET ?", [pagination.limit, pagination.offset], (err, res) => {
         if (err) {
             console.log("Error while fetching book", err);
             result(null, err);
@@ -100,7 +100,7 @@ Book.getAllAvailableBooks = (pagination, result) => {
 
 //Get Book by ID - USER
 Book.getAvailableBookByID = (id, result) => {
-    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, image FROM book WHERE id = ? AND status = 2", id, (err, res) => {
+    dbConn.query("SELECT book_name, category, sub_category, author, quantity, price, series, publisher, country, rating, image FROM book WHERE id = ? AND status = 2", id, (err, res) => {
         if (err) {
             console.log("Error while fetching book by ID", err);
             result(null, err);

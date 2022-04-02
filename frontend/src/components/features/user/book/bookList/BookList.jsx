@@ -14,13 +14,10 @@ const BookList = ({ listBook }) => {
       {listBook.map((item, id) => (
         <div key={id} className='bookItem'>
           <img src={item.image || defaultBookImage} alt='Book' className='bookItem__image' />
-
           <h4 className='bookItem__bookname'>
             <Link to={{ pathname: '/book', search: `?id=${item.id}` }} target={'_blank'}>{item.book_name}</Link>
           </h4>
-
           <h5>${item.price}</h5>
-
           <button className='bookItem__addToCart' onClick={() => handleAddtoCart}>
             <i className="fa-solid fa-cart-shopping"></i>
             &nbsp;Add to Cart

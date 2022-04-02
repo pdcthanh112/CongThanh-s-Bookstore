@@ -2,9 +2,9 @@
   width: 100%;
   height: 30rem;
   margin: 20px 0px;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   display: inline-flex;
-
+  background-color: #fff;
   .bookInformation__image {
     width: 36%;
     height: 100%;
@@ -17,19 +17,18 @@
     }
 
     .bookInformation__image-button {
-        
-        margin-top: 25px;
+      margin-top: 25px;
       .bookInformation__image-button__addToCart {
-        background-color: #68D69D;
+        background-color: #68d69d;
         border: none;
         border-radius: 10px;
-        color: #401D83;
+        color: #401d83;
         width: 10.5rem;
         height: 2.8rem;
         margin-right: 10px;
       }
       .bookInformation__image-button__buyNow {
-        background-color: #96D6FF;
+        background-color: #96d6ff;
         border: none;
         border-radius: 10px;
         color: #fff;
@@ -52,25 +51,37 @@
     .bookInformation__detail-view-one {
       display: inline-flex;
       width: 100%;
-      margin: 12px 0;
+      margin: 4px 0;
       .bookInformation__detail-publisher {
         width: 68%;
       }
       .bookInformation__detail-author {
-        //background-color: red;
         width: 32%;
       }
     }
     .bookInformation__detail-view-two {
       display: inline-flex;
       width: 100%;
+      margin: 4px 0;
 
       .bookInformation__detail-quantity {
         width: 68%;
       }
       .bookInformation__detail-country {
-        //background-color: red;
         width: 32%;
+      }
+    }
+
+    .bookInformation__detail-rating {
+      color: rgba(255, 196, 0, 0.705);
+      width: 12rem;
+      height: 1.5rem;
+      margin-top: 15px;
+      display: inline-flex;
+      .bookInformation__detail-rating__ratingPoint {
+        width: 5rem;
+        font: 1.4em sans-serif;
+        margin-left: 10px;
       }
     }
 
@@ -78,8 +89,11 @@
       font-family: cursive;
       font-weight: bold;
       font-size: 3rem;
-      margin-top: 25px;
+      margin-top: 17px;
       color: rgb(230, 36, 36);
+    }
+
+    .bookInformation__detail-quantity {
     }
   }
 }

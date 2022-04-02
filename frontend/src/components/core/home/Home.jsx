@@ -32,9 +32,7 @@ const Home = () => {
   return (
     <Layout>
       <BookList listBook={listBook}/>
-     
       <Pagination resultPerPage={10} totalResult={88}/>
-
     </Layout>
   )
 }
