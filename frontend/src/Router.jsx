@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
-import Login from "./components/auth/login/Login";
-import Register from "./components/auth/register/Register";
-import BookDetail from "./components/features/user/book/bookDetail/BookDetail";
+import Login from "./common/auth/login/Login";
+import Register from "./common/auth/register/Register";
+import BookDetail from "./common/components/user/book/bookDetail/BookDetail";
 
 const Router = () => {
   return (

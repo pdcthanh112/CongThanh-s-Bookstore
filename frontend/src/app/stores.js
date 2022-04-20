@@ -23,13 +23,10 @@ const store = createStore((state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN':
             return { ...state, auth: { isLogin: true } };
-            break;
         case 'LOGOUT':
             return { ...state, auth: { isLogin: false } }
-            break;
         default:
             return state;
-            break;
     }
 }
 );
