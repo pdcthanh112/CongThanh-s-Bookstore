@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dbConn = require("./src/config/dbConfig/dbConnection");
 const authRoutes = require("./routes/authRoutes");
 
 const adminBookRoutes = require("./routes/adminRoutes/bookRoute");
@@ -14,6 +15,7 @@ require("dotenv").config();
 //create express app
 const app = express();
 
+
 app.use(cors());
 // app.all("/", function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -21,8 +23,6 @@ app.use(cors());
 //   next();
 // });
 
-//setup the server port
-const port = process.env.PORT || 8000;
 
 //parse request data content type application/x-www-form-rulencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +43,11 @@ app.use("/api/v1/admin/sub-category", adminSubCategoryRoutes);
 
 //define user route
 app.use("/api/v1/user/book", userBookRoutes);
+
+dbConn();
+
+//setup the server port
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
   console.log(`CongThanh's app is running on port ${port}`);
