@@ -2,13 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConn = require("./src/config/dbConfig/dbConnection");
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./src/routes/authRoutes");
 
-const adminBookRoutes = require("./routes/adminRoutes/bookRoute");
-const adminCategoryRoutes = require("./routes/adminRoutes/categoryRoute");
-const adminSubCategoryRoutes = require("./routes/adminRoutes/subCategoryRoute");
+const adminBookRoutes = require("./src/routes/adminRoutes/bookRoute");
+const adminCategoryRoutes = require("./src/routes/adminRoutes/categoryRoute");
+const adminSubCategoryRoutes = require("./src/routes/adminRoutes/subCategoryRoute");
 
-const userBookRoutes = require("./routes/userRoutes/bookRoute");
+const userBookRoutes = require("./src/routes/userRoutes/bookRoute");
 
 require("dotenv").config();
 
